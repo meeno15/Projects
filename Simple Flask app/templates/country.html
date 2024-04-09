@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='1.jpeg') }}");
+    }
+</style>
+    <h1 class="bs-secondary-color" style="text-align: center; padding-top: 5px;">{{ template_country | title }}</h1>
+
+    <hr style="color: azure;">
+
+    <div class="container">
+        <div class="row justify-content-center" style="margin-left: 300px;">
+          <div class="col-10">
+            <div class="row">
+              <div class="col-md-4">
+                <div id="list-example" class="list-group" style="margin-top: 100px;">
+                  <a class="list-group-item list-group-item-action" href="#list-item-1">Summary</a>
+                  <a class="list-group-item list-group-item-action" href="#list-item-2">Facts</a>
+                  <a class="list-group-item list-group-item-action" href="#list-item-3">Activities</a>
+                  <a class="list-group-item list-group-item-action" href="#list-item-4">Currency - Language</a>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div data-bs-spy="scroll" data-bs-target="#list-example" data-bs-smooth-scroll="true" class="scrollspy-example" tabindex="0">
+                  <h4 id="list-item-1">About {{ template_country }} </h4>
+                  <p>{{ template_summary }}</p>
+                  <hr style="color: white;">
+                  <h4 id="list-item-2">Things you don't know</h4>
+                  <ul class="list-unstyled">
+                    {% for fact in template_fact %}
+                    <li>{{ fact }}</li>
+                    {% endfor %}
+                  </ul>
+                  <hr style="color: white;">
+                  <h4 id="list-item-3">Some Things to do</h4>
+                  <ul class="list-unstyled">
+                    {% for activity in template_activity %}
+                    <li>{{ activity }}</li>
+                    {% endfor %}
+                  </ul>
+                  <hr style="color: white;">
+                  <h4 id="list-item-4">Our Currency and Language</h4>
+                  <p>{{ template_currency }} - {{ template_language }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock %}
